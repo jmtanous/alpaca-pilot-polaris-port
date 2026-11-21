@@ -29,3 +29,13 @@ part of this acceptance checklist.
 Before binary publication: finish source/notice and chooser-artwork review, supply
 and back up the MMT release signer, decide catalog distribution access, coordinate
 uploaded archive/catalog hashes, and obtain approval for the exact downloads.
+
+## Attended status after MMT build 3 testing
+
+The exact bundled FAT runtime passed MMT-managed SD reinstall, preserved observing
+settings, startup, browser dashboard, reconnect and Stop on Polaris. This supports
+the managed MMT path only. The standalone launcher remains separately unaccepted
+on physical hardware. The owner is testing fresh-SD setup; no result is claimed yet.
+No runtime package bytes, version or catalog hashes changed for the MMT progress
+and helper-upgrade fixes. Binary publication blockers in BINARY-DISTRIBUTION.md
+remain open.
