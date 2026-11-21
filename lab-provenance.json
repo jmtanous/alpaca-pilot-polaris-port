@@ -1,0 +1,10 @@
+{
+  "project": "Alpaca Pilot Polaris Port",
+  "upstream": {
+    "release": "2.2.0 Beta 8",
+    "repository": "https://github.com/ogecko/alpaca-benro-polaris",
+    "source_archive_sha256": "271d56e5031e969bd3f4a9d6405d4a68209947605b4797702008dfec5870dd5a",
+    "license": "UPSTREAM-LICENSE.txt"
+  },
+  "scope": "Public source snapshot; no device captures, credentials, VM images or physical-session receipts included."
+}

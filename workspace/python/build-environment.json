@@ -1,0 +1,10 @@
+{
+  "build_image": "benro-python-build:bookworm",
+  "build_image_id": "sha256:923abd347bbfa10d57704859ca04ee50beccfe9fa146f975358416ffba3d055a",
+  "base_image": "benro-dev-tools:bookworm",
+  "base_image_id": "sha256:52468c2a969e32470204140bf3aae4f4a710db1ea98440a39e8bc663de71d86e",
+  "gcc_source_archive_sha256": "50c63ff82919323c25fbbb4a9eae259edc974118a0fb30c905190cb782ec11c2",
+  "target": "armv7-a EABI soft-float, VFPv3-D16",
+  "captured_libc_sha256": "bc2b65ed3b7d1fca2ccc997901c59ab229029607c646cca55791862f7f9c1027",
+  "note": "Local image IDs and package inventory identify the tested private build environment. Dockerfile apt repositories alone are not a bit-for-bit image rebuild guarantee."
+}

@@ -1,0 +1,24 @@
+# Host build tools; these are separate from the application's frozen runtime lock.
+build
+installer
+wheel
+setuptools>=82.0.1,<84.1
+setuptools-scm>=8,<11
+Cython>=3.2.0,<3.3.0
+meson-python>=0.15.0,<0.22.0
+pybind11>=2.13.2,<3.1.0
+pythran>=0.18.1,<0.19.0
+numpy==2.3.5
+crossenv
+maturin>=1.14.1,<2
+hatchling>=1.27.0,<2
+hatch-vcs>=0.4.0,<0.6.0
+hatch-fancy-pypi-readme>=23.2.0
+poetry-core>=2.1.0
+flit-core>=3.11,<4
+uv_build>=0.10.9,<0.11.0
+pkgconfig
+expandvars
+cffi==2.1.1
+pytest
+versioneer[toml]

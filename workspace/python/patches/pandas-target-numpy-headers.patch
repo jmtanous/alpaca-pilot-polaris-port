@@ -1,0 +1,12 @@
+--- a/pandas/meson.build
++++ b/pandas/meson.build
+@@ -1,2 +1,4 @@
++incdir_numpy = meson.get_external_property('numpy-include-dir', 'not-given')
++if incdir_numpy == 'not-given'
+ incdir_numpy = run_command(
+     py,
+@@ -18,3 +20,4 @@
+     check: true,
+ ).stdout().strip()
++endif
+ 

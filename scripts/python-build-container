@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+network=${BENRO_BUILD_NETWORK:-none}
+case "$network" in none|bridge) ;; *) echo 'Build network must be none or bridge' >&2; exit 1;; esac
+build_image=$(python - <<'PY'
+import json, re, os
+from pathlib import Path
+image = os.environ.get('BENRO_BUILD_IMAGE') or json.loads(Path('workspace/python/build-environment.json').read_text())['build_image_id']
+assert re.fullmatch(r'sha256:[0-9a-f]{64}', image), 'Expected the recorded immutable build image ID'
+print(image)
+PY
+)
+exec docker run --pull never --rm --user "$(id -u):$(id -g)" \
+  --cap-drop ALL --security-opt no-new-privileges \
+  --network "$network" --tmpfs /tmp:exec \
+  -e HOME=/tmp/build-home -e MAKEFLAGS=-j12 \
+  -v "$PWD:/project" "$build_image" "$@"
