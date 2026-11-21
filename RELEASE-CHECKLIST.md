@@ -17,7 +17,7 @@ coordinates are intentional. They are not private network configuration.
 
 ## Port remaining work
 
-- Integrate the included native browser bootstrap as the standalone packaged entrypoint.
+- [x] Integrate the native browser bootstrap as the standalone packaged entrypoint.
 - Provide or document a reproducible, redistributable SDK/build environment.
 - Repeat a clean cross-build and ABI/runtime acceptance; this snapshot includes source recipes, not a newly qualified runtime.
 - Complete browser/API validation of the exact standalone package on hardware.

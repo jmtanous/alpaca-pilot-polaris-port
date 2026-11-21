@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a deterministic private runtime archive from validated build outputs.
+"""Create a deterministic runtime candidate archive from validated build outputs.
 
 No install, service, network, firmware or hardware operation is performed.
 """
@@ -30,6 +30,8 @@ shutil.copy2(WORK/'prefix/opt/benro-python/bin/python3.13', PREFIX/'bin/python3.
 (PREFIX/'bin/python3').symlink_to('python3.13')
 shutil.copy2(WORK/'pilot-launcher.sh', PREFIX/'bin/pilot')
 (PREFIX/'bin/pilot').chmod(0o755)
+(PREFIX/'share/pilot').mkdir(parents=True)
+shutil.copy2(WORK/'pilot_native.py', PREFIX/'share/pilot/pilot_native.py')
 (PREFIX/'lib').mkdir()
 for path in (WORK/'prefix/opt/benro-python/lib').glob('*.so*'):
     if path.is_symlink():
@@ -56,10 +58,10 @@ shutil.copy2(source/'pilot/package.json', APP/'pilot/package.json')
 assert not (APP/'data/config.pilot.json').exists()
 
 licenses = PREFIX/'share/licenses'
-licenses.mkdir(parents=True)
+licenses.mkdir(parents=True, exist_ok=True)
 port_licenses = licenses/'port'
 port_licenses.mkdir()
-for name in ['LICENSE', 'UPSTREAM-LICENSE.txt', 'THIRD-PARTY-NOTICES.md']:
+for name in ['LICENSE', 'UPSTREAM-LICENSE.txt', 'THIRD-PARTY-NOTICES.md', 'SOURCE-AVAILABILITY.md']:
     shutil.copy2(ROOT/name, port_licenses/name)
 license_files = {
     'cpython': ['Python-3.13.18/LICENSE'],
@@ -131,6 +133,9 @@ for record in site.glob('*.dist-info/RECORD'):
         csv.writer(f).writerows(rows)
 
 manifest = {'format': 1, 'application': 'Alpaca/Pilot 2.2.0 Beta 8',
+    'port_version': (ROOT/'VERSION').read_text().strip(),
+    'entrypoint': 'opt/benro-python/bin/pilot',
+    'bootstrap': 'opt/benro-python/share/pilot/pilot_native.py',
     'python': '3.13.18', 'target': 'ARMv7 EABI soft-float; glibc <=2.24',
     'configuration': 'Disconnected lab target 127.0.0.1:19090; no automatic connection',
     'stripped_elf_objects': elf_count, 'files': {}}

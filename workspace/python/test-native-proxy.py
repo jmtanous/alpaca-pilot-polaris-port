@@ -2,10 +2,26 @@
 """Verify the compatibility adapter only rewrites actual loopback hostnames."""
 import types
 import unittest
-from pilot_native import install_proxy_compat, numeric_loopback
+from pilot_native import install_proxy_compat, numeric_loopback, require_staged_config
 
 
 class ProxyTests(unittest.TestCase):
+    def test_staged_config_allowed(self):
+        require_staged_config(types.SimpleNamespace(
+            polaris_ip_address='127.0.0.1', polaris_port=19090,
+            polaris_auto_retry=False, restore_tracking_on_restart=False))
+
+    def test_live_or_automatic_config_rejected(self):
+        for key, value in [('polaris_ip_address', '192.168.0.1'),
+                           ('polaris_port', 9090), ('polaris_auto_retry', True),
+                           ('restore_tracking_on_restart', True)]:
+            with self.subTest(key=key):
+                config = dict(polaris_ip_address='127.0.0.1', polaris_port=19090,
+                              polaris_auto_retry=False, restore_tracking_on_restart=False)
+                config[key] = value
+                with self.assertRaisesRegex(RuntimeError, 'disconnected target'):
+                    require_staged_config(types.SimpleNamespace(**config))
+
     def test_internal_urls(self):
         for scheme in ('http', 'https', 'ws', 'wss'):
             self.assertEqual(numeric_loopback(f'{scheme}://localhost:5555/ws?q=1'),

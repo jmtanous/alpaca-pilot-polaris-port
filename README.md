@@ -14,23 +14,26 @@ are not included. See [BUILDING.md](BUILDING.md) and [RELEASE-CHECKLIST.md](RELE
 - Compatibility patches for the target's older userspace.
 - Deterministic runtime/FAT-SD package recipes and integrity verification.
 - `workspace/python/pilot_native.py`, the native browser compatibility bootstrap,
-  its SD launcher, and four isolated regression tests.
+  its SD launcher, and isolated proxy and launcher regression tests.
 
 The bootstrap corrects internal Pilot proxy URLs from `localhost` to numeric
 loopback for the mount's resolver environment. It preserves upstream proxy behavior
 and does not patch firmware or globally replace the resolver. It requires the
 staged disconnected configuration and leaves connection to Pilot's normal APIs.
 
-**Packaging limitation:** the current runtime recipe retains the legacy `bin/pilot`
-entrypoint. The native bootstrap is included here as source, but integrating it as
-the supported standalone packaged entrypoint and validating that package remain
-release work. MMT supplies its own managed helper; that is a separate installation
-path and does not make this archive a standalone finished release.
+**Local release candidate:** `bin/pilot` now invokes the packaged native bootstrap.
+It starts on loopback by default; pass `--listen 0.0.0.0` only when deliberately
+exposing the UI/API on a trusted network. It refuses a saved live controller target,
+auto retry or tracking restore. The supplied staged configuration is disconnected
+at `127.0.0.1:19090`; later connection belongs to the normal Pilot workflow.
+MMT uses its separate managed helper. This candidate still needs attended physical
+acceptance and binary-distribution review before release.
 
 ## Local compatibility tests
 
 ```sh
 python3 -B workspace/python/test-native-proxy.py
+python3 -B workspace/python/test-packaged-launcher.py
 ```
 
 These tests do not contact or move a mount. Cross-build and physical acceptance

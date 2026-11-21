@@ -44,8 +44,20 @@ The packaging verifier checks manifests and wheel RECORD files. Port/upstream
 licenses and dependency notices are copied into the archives. Inspect the final
 package and complete binary-distribution license/source obligations before release.
 
-The native bootstrap and tests are included, but the legacy packaged launcher has
-not yet been replaced. No new standalone hardware acceptance is claimed. Static ELF audit tools (`audit-bundle.py` and `audit.py`) are included; their
+The packaged entrypoint now invokes `share/pilot/pilot_native.py`. From the
+extracted layout, run `opt/benro-python/bin/pilot` for loopback-only services or
+append `--listen 0.0.0.0` for deliberate network exposure. Its disconnected guard
+checks saved configuration before application startup and does not rewrite it.
+No new standalone hardware acceptance is claimed. Static ELF audit tools (`audit-bundle.py` and `audit.py`) are included; their
 ABI fixture test requires a separately provisioned target root and toolchain. Private
 lab VM tools, session orchestration, firmware captures and physical receipts were
 intentionally excluded from this source snapshot.
+
+## Source companion
+
+Prepare the pinned certifi/zeroconf sources with
+`python3 workspace/python/package-source-companion.py --downloads /path/to/downloads`.
+See [source availability](SOURCE-AVAILABILITY.md). The candidate is repackaged from
+existing compiled inputs in the pinned offline build image; this is not a fresh
+compiler/dependency rebuild. Captured-userspace tests do not certify physical
+hardware timing or the vendor kernel.

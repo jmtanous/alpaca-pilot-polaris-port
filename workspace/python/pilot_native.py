@@ -35,6 +35,18 @@ def install_proxy_compat(module):
     module.AlpacaSocketProxyResource = NativeSocketProxy
 
 
+def require_staged_config(config):
+    """Refuse a saved live target or automatic reconnect before services start."""
+    if (config.polaris_ip_address != '127.0.0.1'
+            or config.polaris_port != 19090
+            or config.polaris_auto_retry
+            or config.restore_tracking_on_restart):
+        raise RuntimeError(
+            'Standalone Pilot requires a disconnected target (127.0.0.1:19090) '
+            'with auto retry and tracking restore disabled. Review saved settings '
+            'before starting; no configuration was changed by this check.')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--app', type=Path, default=Path('/app/sd/opt/alpaca-pilot-2.2'))
@@ -50,8 +62,7 @@ def main():
         original_load(*load_args, **load_kwargs)
         # The bootstrap exposes software services only. Deliberate subsequent
         # connection uses Pilot's normal ConfigUpdate/ConnectPolaris APIs.
-        assert Config.polaris_ip_address == '127.0.0.1' and Config.polaris_port == 19090
-        assert not Config.polaris_auto_retry and not Config.restore_tracking_on_restart
+        require_staged_config(Config)
         Config.apply_changes({'alpaca_restapi_ip_address': args.listen})
 
     Config.load = native_load

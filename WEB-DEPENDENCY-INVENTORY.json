@@ -1,0 +1,81 @@
+{
+  "scope": "Upstream source lock inventory only; not proof of which modules are in the compiled UI or complete notice coverage.",
+  "package_lock_sha256": "f28dba7b7687e2c9d5622f5efbc032106b9e2b2202aaf86467e084a4f722288c",
+  "direct_production_dependencies": [
+    {
+      "name": "@quasar/extras",
+      "requested": "^2.1.0",
+      "version": "2.1.0",
+      "license_from_lock": null,
+      "resolved": "https://registry.npmjs.org/@quasar/extras/-/extras-2.1.0.tgz",
+      "integrity": "sha512-WCqHXr3loA9bP1DUuzmCwuNXnHa9GKosAtjwJnr1DpngO68a0JoiyVuoXzc760tCBArdFLD/YAUHvItPbk6V2Q=="
+    },
+    {
+      "name": "@vueuse/core",
+      "requested": "^14.4.0",
+      "version": "14.4.0",
+      "license_from_lock": "MIT",
+      "resolved": "https://registry.npmjs.org/@vueuse/core/-/core-14.4.0.tgz",
+      "integrity": "sha512-X4WHz1HlCzCBoYXesUkifzzWBAcZgXG8Fi5iNPQg/epdzOB3gu8Fawj3hvuwYR1nGcXGnvxwYYcUC/71++svtQ=="
+    },
+    {
+      "name": "axios",
+      "requested": ">=1.18.0",
+      "version": "1.19.0",
+      "license_from_lock": "MIT",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.19.0.tgz",
+      "integrity": "sha512-ht/iuYZXEjFxLH/Hkezgd7m6JKlHHXEUSneaDz8uZe1Gj5QZtCnpyDsckvAiEnT89OEbCLmnte4R4sn7P0EKFw=="
+    },
+    {
+      "name": "d3",
+      "requested": "^7.9.0",
+      "version": "7.9.0",
+      "license_from_lock": "ISC",
+      "resolved": "https://registry.npmjs.org/d3/-/d3-7.9.0.tgz",
+      "integrity": "sha512-e1U46jVP+w7Iut8Jt8ri1YsPOvFpg46k+K8TpCb0P+zjCkjkPnV7WzfDJzMHy1LnA+wj5pLT1wjO901gLXeEhA=="
+    },
+    {
+      "name": "leaflet",
+      "requested": "^1.9.4",
+      "version": "1.9.4",
+      "license_from_lock": "BSD-2-Clause",
+      "resolved": "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz",
+      "integrity": "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA=="
+    },
+    {
+      "name": "pinia",
+      "requested": "^3.0.3",
+      "version": "3.0.4",
+      "license_from_lock": "MIT",
+      "resolved": "https://registry.npmjs.org/pinia/-/pinia-3.0.4.tgz",
+      "integrity": "sha512-l7pqLUFTI/+ESXn6k3nu30ZIzW5E2WZF/LaHJEpoq6ElcLD+wduZoB2kBN19du6K/4FDpPMazY2wJr+IndBtQw=="
+    },
+    {
+      "name": "quasar",
+      "requested": "^2.33.1",
+      "version": "2.33.1",
+      "license_from_lock": null,
+      "resolved": "https://registry.npmjs.org/quasar/-/quasar-2.33.1.tgz",
+      "integrity": "sha512-lFuCQYK8nLmK/oCu5+s3DMRMgVsGbz/72yUuhyQ7S1KSX8C0VaruqQfHp34nBFh955PIsAU/gmwdhMUu0dHphQ=="
+    },
+    {
+      "name": "vue",
+      "requested": "^3.4.18",
+      "version": "3.5.41",
+      "license_from_lock": "MIT",
+      "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.41.tgz",
+      "integrity": "sha512-2laE0p+aK+/AOPG/XL/WepOs/GlK755LJ1XECi9kDUrz1FKNw8rb2Xzlw9JS1rqEV55nb0ttsKxVlTCcd+R5cg=="
+    },
+    {
+      "name": "vue-router",
+      "requested": "^5.3.1",
+      "version": "5.3.1",
+      "license_from_lock": null,
+      "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-5.3.1.tgz",
+      "integrity": "sha512-GDBZzgmILxA/kFnkFbJjQZdZ2QQbngnIMMuoUcjhZIfH1RGMaPjPwX5ASnV38qamuA9uhO0RDjSBHTDNG2uXyQ=="
+    }
+  ],
+  "locked_dependency_records": 585,
+  "records_without_license_field": 171,
+  "pending": "Resolve missing license metadata and collect actual notices for compiled UI, including bundled font/icon/image resources."
+}
