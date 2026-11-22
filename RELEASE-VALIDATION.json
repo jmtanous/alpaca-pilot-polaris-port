@@ -66,5 +66,7 @@
   "standalone_physical_acceptance": false,
   "fresh_sd_physical_acceptance": false,
   "release_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/tag/v0.1.0-rc.2",
-  "prerelease": true
+  "prerelease": true,
+  "public_release_asset_digests_verified": true,
+  "anonymous_download_verification": "All MMT release assets downloaded and SHA-256 matched; matching port asset digests verified via anonymous API"
 }
