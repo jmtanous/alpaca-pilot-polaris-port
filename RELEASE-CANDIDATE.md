@@ -1,4 +1,4 @@
-# Port 0.1.0-rc.2 — local candidate
+# Port 0.1.0-rc.2 — experimental release candidate
 
 The standalone `bin/pilot` now runs the native browser-proxy bootstrap included in
 `share/pilot`. It supports relocated extracted layouts and defaults to loopback.
@@ -20,6 +20,19 @@ exact hashes, scope and limits. A complete new cross-build of the entire port an
 physical acceptance of newly rebuilt dependencies are not claimed.
 No firmware, captured SDK, device configuration or physical-session receipts are
 included in the public source checkout. No release upload has occurred.
+
+## Final rc.2 managed acceptance
+
+The exact rc.2 FAT runtime passed MMT build 11 installation on existing SD storage,
+all 4,600 file checks, preserved observing-site settings, startup/controller
+connection, live webpage, Stop and reconnect. Pilot was left stopped. No firmware,
+boot, alignment, slew or tracking actions were performed. The source companion is
+verified and accompanies the experimental binaries.
+
+Standalone-launcher and fresh-SD hardware acceptance remain open. The full clean
+port cross-build and physical testing of rebuilt dependencies are separate; the
+replacement libraries are not shipped. Prior preparation text below is historical.
+The owner authorized publishing this experimental managed-path candidate.
 
 ## Attended handoff
 

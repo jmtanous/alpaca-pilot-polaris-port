@@ -1,4 +1,4 @@
-# Binary distribution review — local candidate
+# Binary distribution review — experimental rc.2
 
 The runtime has 34 Python distributions. Each has retained license/notice files;
 exact versions, source URLs/hashes and notice paths are in
@@ -79,3 +79,13 @@ actual distributed libraries, then validate that companion. The public replaceme
 
 Local packaging and tests do not clear these publication items. No binary upload
 or release publication is part of this unattended preparation.
+
+## Final rc.2 distribution status
+
+Signed build 11 notice/asset coverage, artwork provenance and the matching source
+companion have been verified. The exact runtime passed existing-SD MMT-managed
+upgrade, startup, webpage, Stop and reconnect. The owner authorized publishing
+this experimental candidate with its source companion and checksum manifest.
+Fresh-SD, standalone physical acceptance and a full clean port cross-build remain
+separate limits, not claims of this release. Earlier preparation requirements
+above are retained as review history.

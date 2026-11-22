@@ -4,9 +4,9 @@ Build recipes and compatibility tools for running Alpaca Benro Polaris / Alpaca
 Pilot 2.2 Beta 8 on the Benro Polaris SD card using an ARM EABI soft-float Python
 runtime. Independent work, not affiliated with or endorsed by Benro or oGecko.
 
-**Experimental source preview, not a ready-to-install release.** Upstream software,
-firmware/sysroot captures, VM images, generated binaries and device configurations
-are not included. See [BUILDING.md](BUILDING.md) and [RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md).
+**Experimental release candidate.** Download the MMT-compatible runtime and matching
+source companion from [GitHub Releases](https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/tag/v0.1.0-rc.2).
+Firmware/sysroot captures, VM images and private device configurations are not included. See [BUILDING.md](BUILDING.md) and [RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md).
 
 ## Included
 
@@ -21,13 +21,14 @@ loopback for the mount's resolver environment. It preserves upstream proxy behav
 and does not patch firmware or globally replace the resolver. It requires the
 staged disconnected configuration and leaves connection to Pilot's normal APIs.
 
-**Local release candidate:** `bin/pilot` now invokes the packaged native bootstrap.
+**Standalone launcher:** `bin/pilot` now invokes the packaged native bootstrap.
 It starts on loopback by default; pass `--listen 0.0.0.0` only when deliberately
 exposing the UI/API on a trusted network. It refuses a saved live controller target,
 auto retry or tracking restore. The supplied staged configuration is disconnected
 at `127.0.0.1:19090`; later connection belongs to the normal Pilot workflow.
-MMT uses its separate managed helper. This candidate still needs attended physical
-acceptance and binary-distribution review before release.
+MMT uses its separate managed helper. The existing-SD MMT-managed workflow passed
+physical acceptance; the standalone launcher and fresh-SD installation remain
+unaccepted on hardware. See RELEASE-VALIDATION.json for exact scope.
 
 ## Local compatibility tests
 
