@@ -60,9 +60,11 @@
   "modified_certifi_and_pure_python_zeroconf_host_and_arm_checks": "passed",
   "full_clean_port_cross_build": false,
   "physical_mount_acceptance": true,
-  "published": false,
+  "published": true,
   "source_recipes_match_current_files": true,
   "physical_mount_acceptance_scope": "MMT-managed existing-SD rc.2 upgrade, settings retention, startup, live webpage, stop and reconnect",
   "standalone_physical_acceptance": false,
-  "fresh_sd_physical_acceptance": false
+  "fresh_sd_physical_acceptance": false,
+  "release_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/tag/v0.1.0-rc.2",
+  "prerelease": true
 }
