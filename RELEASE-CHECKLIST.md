@@ -6,6 +6,8 @@ Installable releases are still being prepared; no signed download is available.
 - [x] MIT for original contributions; upstream notices retained unchanged.
 - [x] Exclude private lab history, physical-session evidence and personal device/network identifiers.
 - [x] Exclude firmware/sysroot captures, VM images, credentials and generated binaries.
+- [x] Record pinned npm/Rust notice review and exact runtime web-asset comparison.
+- [ ] Integrate recovered notices and complete GCC source/replacement-build coverage.
 - [ ] Complete the component-level binary license/source compliance review.
 - [ ] Freeze versioned release packages and their hashes together.
 - [ ] Complete attended Pixel/Polaris acceptance of those exact packages.

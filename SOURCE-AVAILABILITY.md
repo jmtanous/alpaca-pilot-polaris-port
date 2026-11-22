@@ -15,7 +15,12 @@ remain inside those source archives. Generate it offline with:
 python3 workspace/python/package-source-companion.py --downloads /path/to/pinned-downloads
 ```
 
-Distribute that companion alongside any future binary release and provide a direct
+This two-package companion is incomplete: the distributed GCC runtime libraries
+also require corresponding source coverage. See
+[BINARY-DISTRIBUTION.md](BINARY-DISTRIBUTION.md#gcc-source-companion-gap) for the
+pinned inputs and outstanding build requirements.
+
+Distribute the completed companion alongside any future binary release and provide a direct
 source download link. It is prepared locally; no public download is promised yet.
 These two components have no project-specific source patches. Build recipes and
 wheel integrity-record updates are provided separately. The target SDK is not
