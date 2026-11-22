@@ -1,0 +1,65 @@
+{
+  "runtime_version": "0.1.0-rc.2",
+  "runtime_sha256": "30d34031d479505ce3f05a9cdabc6264f231ed7a2aec029edb0fff11c4467f1d",
+  "runtime_repack_deterministic": true,
+  "existing_runtime_files_unchanged": 4361,
+  "existing_notice_documents_changed": 2,
+  "recovered_notices_added": 237,
+  "source_companion_sha256": "7773e6206a5018c436875a8956804e46f3187ff9fea81b7e6dbe4c712a78b518",
+  "source_manifest_entries_verified": 70,
+  "source_packages": [
+    "certifi",
+    "ifaddr",
+    "zeroconf"
+  ],
+  "gcc_source_and_patch_verified": true,
+  "tampered_gcc_patch_rejected": true,
+  "public_sdk_packages": 3,
+  "arm_compile_link_and_qemu_execution": "passed",
+  "gcc_replacement": {
+    "gcc_build": "passed",
+    "libraries": [
+      {
+        "library": "libatomic.so.1",
+        "sha256": "ab9b04660aeba5b28e23ded53a062b0a1e446ecf501c435fd349ba982b057b5c",
+        "max_glibc": [
+          2,
+          4
+        ]
+      },
+      {
+        "library": "libgcc_s.so.1",
+        "sha256": "8daf4c1a5e7bc5c90e1bd1148759d3dbf84e6408171e168ca5a2607b2928d9f5",
+        "max_glibc": [
+          2,
+          4
+        ]
+      },
+      {
+        "library": "libgfortran.so.5",
+        "sha256": "b58cb72e4ec0c51d91fb09bf92c1227a587d979339e2b6ba879bd3c7b7e53eb6",
+        "max_glibc": [
+          2,
+          18
+        ]
+      },
+      {
+        "library": "libstdc++.so.6",
+        "sha256": "4bfb6effb790bfbfeec95a14b7a1e4ce5b785119b11cd57e6b0e4b98ed06008b",
+        "max_glibc": [
+          2,
+          18
+        ]
+      }
+    ],
+    "arm_runtime_imports_and_numeric_crypto_operations": "passed",
+    "rebuilt_library_mappings_verified": true,
+    "physical_mount_tested": false,
+    "original_runtime_modified": false
+  },
+  "modified_certifi_and_pure_python_zeroconf_host_and_arm_checks": "passed",
+  "full_clean_port_cross_build": false,
+  "physical_mount_acceptance": false,
+  "published": false,
+  "source_recipes_match_current_files": true
+}

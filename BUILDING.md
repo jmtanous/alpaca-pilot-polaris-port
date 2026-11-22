@@ -55,9 +55,68 @@ intentionally excluded from this source snapshot.
 
 ## Source companion
 
-Prepare the pinned certifi/zeroconf sources with
+Prepare the pinned certifi/zeroconf/GCC sources and applied GCC patch with
 `python3 workspace/python/package-source-companion.py --downloads /path/to/downloads`.
 See [source availability](SOURCE-AVAILABILITY.md). The candidate is repackaged from
 existing compiled inputs in the pinned offline build image; this is not a fresh
 compiler/dependency rebuild. Captured-userspace tests do not certify physical
 hardware timing or the vendor kernel.
+
+## Public replacement-SDK candidate
+
+The frozen runtime was built using the captured SDK above. A separate candidate
+uses only public Debian archive inputs pinned in `workspace/python/public-sdk.json`.
+It is a host build sysroot, not a firmware or libc update for the mount. Do not copy
+its libraries onto the SD runtime or mount operating system.
+
+Fetch with `python3 workspace/python/prepare-public-sdk.py --fetch`. Inside the
+existing build container with this checkout mounted at `/project`, extract with:
+
+```sh
+python3 /project/workspace/python/prepare-public-sdk.py --output /project/workspace/python/out/public-sdk-sysroot
+bash /project/workspace/python/check-public-sdk.sh
+```
+
+Extraction requires a fresh output directory and runs no package maintainer scripts.
+The compile/link smoke test passes for ARMv7 soft-float, with GLIBC_2.4 symbol
+requirements, and the executable runs under qemu-arm-static. It explicitly isolates
+old libc headers from the container's newer cross headers. The extraction recipe
+rewrites absolute development-library symlinks to relative links within the sysroot;
+without this, the linker can select static libm and introduce private loader symbols.
+
+The GCC toolchain and four distributed GCC libraries were rebuilt from the pinned
+source against this SDK. Inside the offline build container, use a separate output:
+
+```sh
+MMT_TOOLCHAIN_WORK_ROOT=/project/workspace/python/out/public-toolchain MMT_TOOLCHAIN_SYSROOT=/project/workspace/python/out/public-sdk-sysroot bash /project/workspace/python/build-toolchain.sh
+```
+
+On the host with readelf and qemu-arm-static, run:
+
+```sh
+python3 workspace/python/check-gcc-replacement.py --runtime-prefix /path/to/extracted/opt/benro-python
+python3 workspace/python/check-python-source-replacement.py --arm-runtime-prefix /path/to/extracted/opt/benro-python
+```
+
+These checks pass: all four rebuilt GCC libraries actually load into the frozen
+ARM Python runtime; NumPy/SciPy calculations and cryptography operations succeed.
+Their highest GLIBC requirement is 2.18, within the 2.24 ceiling. Modified certifi
+source loads and uncompiled zeroconf serializes DNS packets under the ARM interpreter.
+The source companion includes ifaddr to support the offline zeroconf check.
+OpenSSL reports its legacy provider unavailable in this QEMU setup; tested modern
+cryptography operations pass. No mount execution or legacy-algorithm claim is made.
+
+For a modified zeroconf, its source build supports `SKIP_CYTHON=1` to omit optional
+extensions. Work in a copy of the extracted runtime, replace the zeroconf package
+with the source `src/zeroconf` tree (remove that package's old extension modules),
+and retain its COPYING and metadata. Certifi likewise permits replacement of its
+source/data files. Rebuild wheel RECORD entries and bundle/catalog hashes using
+the supplied packaging recipes before distributing a modified package; the frozen
+manifest must not be reused. The check scripts use temporary copies and never
+modify the frozen runtime.
+
+The main full-runtime pipeline still defaults to its original SDK. A complete clean
+cross-build of every port dependency against the public SDK and physical acceptance
+of those newly built binaries remain separate work. The rc.2 candidate retains the
+already tested executable payload; the replacement libraries are validation outputs
+only and are not shipped in it.

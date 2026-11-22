@@ -42,7 +42,8 @@ including possible build-only code, not proof of which modules were linked.
 The missing lockfile license fields above are now supplemented by archive notices.
 Recovered texts include font notices from Quasar extras, the Unicode notice from
 unicode-ident, and the available Apache-2.0 branch for self_cell. These recovered
-notices have **not yet been integrated into the runtime or APK**.
+notices are now included in the rc.2 runtime and build 10 APK. The baseline
+audit JSON remains bound to the original rc.1 archive.
 
 Reproduce the review with `scripts/review-distribution-licenses.py --help`.
 Use `--fetch` once to retrieve integrity-pinned npm archives, then rerun offline
@@ -54,27 +55,27 @@ The tool does not execute package code or extract archives onto the filesystem.
 The runtime ships libatomic, libgcc_s, libgfortran and libstdc++ shared libraries.
 The GCC runtime exception does not waive source delivery for the library binaries
 themselves; see the [GNU exception FAQ](https://www.gnu.org/licenses/gcc-exception-3.1-faq.html).
-The current companion contains only certifi and zeroconf, so it is incomplete.
+The expanded companion now includes the pinned GCC source archive and applied
+patch, alongside certifi and zeroconf. The public-SDK GCC rebuild and ARM runtime replacement checks now pass; physical
+acceptance and a complete cross-build of all other components remain separate.
 
 The build recipe identifies Debian gcc-12-source 12.2.0-14+deb12u1,
 `gcc-12.2.0-dfsg.tar.xz` SHA-256
-`50c63ff82919323c25fbbb4a9d6405d4a68209947605b4797702008dfec5870dd5a`,
+`50c63ff82919323c25fbbb4a9eae259edc974118a0fb30c905190cb782ec11c2`,
 and `gcc-gfdl-build.diff` SHA-256
 `29b36f739f29959b580364a7aff45a0f291a6bd7c803af6794b737130acfb751`.
 Provide the corresponding source, applied patches and build instructions for the
-actual distributed libraries, then validate that companion. The SDK/replacement
-build path also remains unresolved.
+actual distributed libraries, then validate that companion. The public replacement SDK and checked replacement recipes are documented in BUILDING.md.
 
 ## Still required before binary publication
 
-- Integrate recovered web/font/Rust notices into the runtime and MMT license UI.
-- Expand the source companion to cover the shipped GCC runtime libraries.
+- Complete physical acceptance and review the exact release/source artifacts.
 - Make the source companion publicly downloadable alongside authorized binaries,
   with tested replacement/rebuild instructions and the required notices.
-- Establish a redistributable/reproducible SDK path; captured target SDK inputs
-  remain private and are not included in these artifacts.
-- In MMT, verify provenance of the remaining Stitch-derived Polaris chooser image.
-  The old Stitch emblem has been replaced with recorded generated clay artwork.
+- Keep captured target SDK inputs private. The pinned public replacement SDK
+  passes GCC/Python component checks; a clean rebuild of the whole port is not claimed.
+- Repeat final signed-APK notice verification; build 10 debug packaging is verified.
+  MMT records the corrected Stitch chooser image hash and its live-design receipt.
 
 Local packaging and tests do not clear these publication items. No binary upload
 or release publication is part of this unattended preparation.

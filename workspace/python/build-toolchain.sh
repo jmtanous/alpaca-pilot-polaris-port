@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
-root=/project/workspace/python
+root=${MMT_TOOLCHAIN_WORK_ROOT:-/project/workspace/python}
+sysroot=${MMT_TOOLCHAIN_SYSROOT:-$root/build/benro-sdk/sysroot}
+test -d "$sysroot/usr/include"
 # Keep the same conservative ABI ceiling as CPython despite vendor backports.
 export ac_cv_func_getentropy=no ac_cv_func_getrandom=no ac_cv_func_explicit_bzero=no
 mkdir -p "$root/build/gcc-source" "$root/build/gcc-build" "$root/build/toolchain"
@@ -15,6 +17,7 @@ fi
 src="$root/build/gcc-source/gcc-12.2.0"
 test -x "$src/configure"
 doc_patch=/usr/src/gcc-12/debian/patches/gcc-gfdl-build.diff
+test "$(sha256sum "$doc_patch" | cut -d' ' -f1)" = 29b36f739f29959b580364a7aff45a0f291a6bd7c803af6794b737130acfb751
 sha256sum "$doc_patch" > "$root/build/gcc-documentation-patch.sha256"
 if [ ! -f "$src/.benro-documentation-patch" ]; then
   patch -d "$src" -p2 < "$doc_patch"
@@ -22,7 +25,7 @@ if [ ! -f "$src/.benro-documentation-patch" ]; then
 fi
 cd "$root/build/gcc-build"
 "$src/configure" --prefix="$root/build/toolchain" --target=arm-linux-gnueabi \
-  --with-sysroot="$root/build/benro-sdk/sysroot" \
+  --with-sysroot="$sysroot" \
   --with-native-system-header-dir=/usr/include --enable-multiarch \
   --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=softfp \
   --enable-languages=c,c++,fortran --enable-threads=posix \

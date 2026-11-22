@@ -63,6 +63,14 @@ port_licenses = licenses/'port'
 port_licenses.mkdir()
 for name in ['LICENSE', 'UPSTREAM-LICENSE.txt', 'THIRD-PARTY-NOTICES.md', 'SOURCE-AVAILABILITY.md']:
     shutil.copy2(ROOT/name, port_licenses/name)
+recovered = json.loads((ROOT/'RECOVERED-NOTICES.json').read_text())
+for name, text in recovered.items():
+    relative = Path(name)
+    if relative.is_absolute() or '..' in relative.parts:
+        raise ValueError('Unsafe recovered notice path: '+name)
+    destination = licenses/'recovered'/relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(text)
 license_files = {
     'cpython': ['Python-3.13.18/LICENSE'],
     'openssl': ['openssl-3.5.9/LICENSE.txt'],

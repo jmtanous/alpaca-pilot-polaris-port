@@ -7,7 +7,11 @@ Installable releases are still being prepared; no signed download is available.
 - [x] Exclude private lab history, physical-session evidence and personal device/network identifiers.
 - [x] Exclude firmware/sysroot captures, VM images, credentials and generated binaries.
 - [x] Record pinned npm/Rust notice review and exact runtime web-asset comparison.
-- [ ] Integrate recovered notices and complete GCC source/replacement-build coverage.
+- [x] Integrate recovered notices and include pinned GCC source and patch.
+- [x] Prepare public Debian SDK inputs and pass ARM compile/link smoke test.
+- [x] Rebuild GCC with public SDK and validate actual replacement-library loading under ARM QEMU.
+- [x] Validate modified certifi and pure-Python zeroconf under the ARM interpreter.
+- [ ] Complete full-port clean cross-build and physical acceptance separately.
 - [ ] Complete the component-level binary license/source compliance review.
 - [ ] Freeze versioned release packages and their hashes together.
 - [ ] Complete attended Pixel/Polaris acceptance of those exact packages.

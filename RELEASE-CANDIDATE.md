@@ -1,4 +1,4 @@
-# Port 0.1.0-rc.1 — local candidate
+# Port 0.1.0-rc.2 — local candidate
 
 The standalone `bin/pilot` now runs the native browser-proxy bootstrap included in
 `share/pilot`. It supports relocated extracted layouts and defaults to loopback.
@@ -11,8 +11,13 @@ build image, with a clean packaging tree. This is not a fresh dependency compile
 rebuild. Normal and FAT layouts have manifest/34-wheel integrity checks. The FAT
 layout includes only regular files/directories and is the runtime MMT embeds.
 
-The source companion contains pinned certifi and zeroconf source archives plus
-build recipes. See BINARY-DISTRIBUTION.md for remaining component/provenance work.
+The rc.2 update adds 237 web/font/Rust notices and updates two existing notice
+documents; all 4,361 other existing runtime files remain byte-identical. The source
+companion contains pinned certifi, zeroconf, supporting ifaddr and GCC sources,
+the applied GCC patch, and build/replacement recipes. Public-SDK GCC rebuild and
+ARM-QEMU replacement tests pass. See RELEASE-VALIDATION.json and BUILDING.md for
+exact hashes, scope and limits. A complete new cross-build of the entire port and
+physical acceptance of newly rebuilt dependencies are not claimed.
 No firmware, captured SDK, device configuration or physical-session receipts are
 included in the public source checkout. No release upload has occurred.
 

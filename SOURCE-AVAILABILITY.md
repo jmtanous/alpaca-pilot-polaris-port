@@ -15,10 +15,12 @@ remain inside those source archives. Generate it offline with:
 python3 workspace/python/package-source-companion.py --downloads /path/to/pinned-downloads
 ```
 
-This two-package companion is incomplete: the distributed GCC runtime libraries
-also require corresponding source coverage. See
+The companion now also includes the exact GCC 12.2.0 source archive and applied
+documentation patch for libatomic, libgcc_s, libgfortran and libstdc++. Input hashes
+are verified before packaging and recorded in SOURCE-MANIFEST.json. See
 [BINARY-DISTRIBUTION.md](BINARY-DISTRIBUTION.md#gcc-source-companion-gap) for the
-pinned inputs and outstanding build requirements.
+pinned inputs and outstanding build requirements. Replacement build validation
+remains open; including these sources does not establish a validated public SDK.
 
 Distribute the completed companion alongside any future binary release and provide a direct
 source download link. It is prepared locally; no public download is promised yet.
