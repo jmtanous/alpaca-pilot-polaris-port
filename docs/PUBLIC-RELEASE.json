@@ -1,0 +1,50 @@
+{
+  "repository": "jmtanous/alpaca-pilot-polaris-port",
+  "tag": "v0.2.0-rc.1",
+  "release_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/tag/v0.2.0-rc.1",
+  "anonymous": true,
+  "assets": [
+    {
+      "name": "SHA256SUMS",
+      "asset_id": 784337571,
+      "bytes": 320,
+      "sha256": "64b162252b55b8fd1047d7c1e5e91ff5f7d4df563228d4166829d153fc8d6df6",
+      "api_url": "https://api.github.com/repos/jmtanous/alpaca-pilot-polaris-port/releases/assets/784337571",
+      "browser_download_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/download/v0.2.0-rc.1/SHA256SUMS",
+      "anonymous": true,
+      "download_host": "release-assets.githubusercontent.com"
+    },
+    {
+      "name": "benro-alpaca-pilot-2.2.0-port.0.2.0-rc.1-sd-fat.tar.gz",
+      "asset_id": 784337565,
+      "bytes": 59696116,
+      "sha256": "1e4fe3b33c0eeacafa85e9f4ae9e2558457e3bf38f22efee30529d4086a69520",
+      "api_url": "https://api.github.com/repos/jmtanous/alpaca-pilot-polaris-port/releases/assets/784337565",
+      "browser_download_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/download/v0.2.0-rc.1/benro-alpaca-pilot-2.2.0-port.0.2.0-rc.1-sd-fat.tar.gz",
+      "anonymous": true,
+      "download_host": "release-assets.githubusercontent.com"
+    },
+    {
+      "name": "pilot-2.2.0-port-source.tar.gz",
+      "asset_id": 784337569,
+      "bytes": 199431,
+      "sha256": "35e31e6f54b85b69cbc940557f6488227f86f40b0c443324d4d9d5793472f512",
+      "api_url": "https://api.github.com/repos/jmtanous/alpaca-pilot-polaris-port/releases/assets/784337569",
+      "browser_download_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/download/v0.2.0-rc.1/pilot-2.2.0-port-source.tar.gz",
+      "anonymous": true,
+      "download_host": "release-assets.githubusercontent.com"
+    },
+    {
+      "name": "pilot-2.2.0-source-companion.tar.gz",
+      "asset_id": 784337570,
+      "bytes": 80969044,
+      "sha256": "7c5a415b732acf6bb86181b9f15098a54ec50032b2c04e4a301bb4109cd3ac3e",
+      "api_url": "https://api.github.com/repos/jmtanous/alpaca-pilot-polaris-port/releases/assets/784337570",
+      "browser_download_url": "https://github.com/jmtanous/alpaca-pilot-polaris-port/releases/download/v0.2.0-rc.1/pilot-2.2.0-source-companion.tar.gz",
+      "anonymous": true,
+      "download_host": "release-assets.githubusercontent.com"
+    }
+  ],
+  "source_commit": "cf20fb3438ebba5bb6a7dd772ea4d5482be471b3",
+  "legacy_release_preserved": "v0.1.0-rc.2"
+}

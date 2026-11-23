@@ -164,7 +164,7 @@
     }
   },
   "physical_acceptance": true,
-  "published": false,
+  "published": true,
   "settings_migration": {
     "result": "passed",
     "receipt": "settings-migration-2.2.0.json"
@@ -212,5 +212,6 @@
     "public_downloads": false,
     "post_stop_keepalive_seconds": 134.379,
     "motor_or_observing_accuracy": false
-  }
+  },
+  "public_release": "docs/PUBLIC-RELEASE.json"
 }

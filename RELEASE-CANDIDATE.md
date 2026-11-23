@@ -17,11 +17,11 @@ The release-specific source companion contains the correct certifi version,
 zeroconf/ifaddr and GCC sources, patches and shared build recipes. All 156 web
 package archives and 32 Rust crate inventories verify, with 237 retained notices.
 The new package is staged as a nonrecommended catalog version alongside unchanged
-recommended Beta 8. No asset ID or upload is claimed. Existing-SD startup, phone dashboard, Stop and
+recommended Beta 8. Public assets and source companions are uploaded and verified anonymously. Existing-SD startup, phone dashboard, Stop and
 settings rollback passed after connection recovery; clean-directory installation and a 134-second monitored post-stop repeat passed
 as well. The earlier recovered drop remains unexplained. No formatted-card or
 observing-accuracy claim is made. See docs/validation/pilot-2.2.0-clean-install.json.
-Publication approval remains open. See docs/validation/pilot-2.2.0-build.json.
+Publication evidence is recorded in docs/PUBLIC-RELEASE.json. See docs/validation/pilot-2.2.0-build.json.
 
 The default legacy VERSION/build pipeline continues to describe Beta 8. Use the
 release-specific scripts for 2.2.0; versions share this repository. Prior rc.2
