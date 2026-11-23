@@ -11,6 +11,7 @@ import tempfile
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
+LABEL = '2.2.0 Beta 8'
 PIN = '271d56e5031e969bd3f4a9d6405d4a68209947605b4797702008dfec5870dd5a'
 DEST = ROOT / 'workspace/upstream/alpaca-2.2-beta8'
 SETTINGS = {
@@ -27,7 +28,7 @@ SETTINGS = {
 
 def stage(archive):
     if hashlib.sha256(archive.read_bytes()).hexdigest() != PIN:
-        raise ValueError('Upstream archive does not match the pinned 2.2 Beta 8 release')
+        raise ValueError('Upstream archive does not match the pinned '+LABEL+' release')
     if DEST.exists():
         raise FileExistsError(f'{DEST} already exists; refusing to replace source or settings')
     DEST.parent.mkdir(parents=True, exist_ok=True)
@@ -36,6 +37,13 @@ def stage(archive):
         target.mkdir()
         with tarfile.open(archive) as tar:
             tar.extractall(target, filter='data')
+        if not (target / 'pyproject.toml').exists():
+            children = list(target.iterdir())
+            if len(children) != 1 or not children[0].is_dir():
+                raise ValueError('Unexpected upstream archive layout')
+            nested = children[0]
+            for child in list(nested.iterdir()): child.rename(target / child.name)
+            nested.rmdir()
         project = tomllib.loads((target / 'pyproject.toml').read_text())['project']
         if project['version'] != '2.2.0':
             raise ValueError('Unexpected application version')
@@ -54,14 +62,21 @@ def stage(archive):
         tomllib.loads(text)
         config.write_text(text)
         (target / 'LAB-SOURCE-RECEIPT.json').write_text(json.dumps({
-            'archive_sha256': PIN, 'version': '2.2.0 Beta 8',
+            'archive_sha256': PIN, 'version': LABEL,
             'original_files': hashes, 'lab_settings': SETTINGS,
         }, indent=2) + '\n')
         target.rename(DEST)
-    print(f'Staged Alpaca/Pilot 2.2.0 Beta 8 at {DEST}')
+    print(f'Staged Alpaca/Pilot {LABEL} at {DEST}')
     print('Disconnected target: 127.0.0.1:19090; no service started')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('archive', type=Path)
-    stage(parser.parse_args().archive)
+    parser.add_argument('--release', choices=['beta8', '2.2.0'], default='beta8')
+    args = parser.parse_args()
+    if args.release == '2.2.0':
+        receipt = json.loads((ROOT / 'docs/upstream-v2.2.0.json').read_text())
+        PIN = receipt['archive_sha256']
+        LABEL = '2.2.0'
+        DEST = ROOT / 'workspace/upstream/alpaca-2.2.0'
+    stage(args.archive)

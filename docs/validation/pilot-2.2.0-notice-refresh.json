@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "changed_files": [
+    "opt/benro-python/share/licenses/port/LICENSE",
+    "opt/benro-python/share/licenses/port/SOURCE-AVAILABILITY.md",
+    "opt/benro-python/share/licenses/port/UPSTREAM-LICENSE.txt",
+    "opt/benro-python/share/licenses/recovered/npm/node_modules/vite/package/LICENSE.md"
+  ],
+  "application_and_runtime_bytes_unchanged": true,
+  "archive_sha256": "1e4fe3b33c0eeacafa85e9f4ae9e2558457e3bf38f22efee30529d4086a69520"
+}

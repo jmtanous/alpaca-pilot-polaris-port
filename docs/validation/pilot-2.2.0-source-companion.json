@@ -1,0 +1,12 @@
+{
+  "archive": "copyleft-source-companion-2.2.0.tar.gz",
+  "sha256": "7c5a415b732acf6bb86181b9f15098a54ec50032b2c04e4a301bb4109cd3ac3e",
+  "packages": [
+    "certifi",
+    "ifaddr",
+    "zeroconf"
+  ],
+  "files": 102,
+  "source_manifest_verified": true,
+  "private_session_scripts_excluded": true
+}

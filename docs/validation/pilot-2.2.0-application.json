@@ -1,0 +1,40 @@
+{
+  "result": "passed",
+  "driver_version": "2.2.0 Release",
+  "pilot_assets_verified": 129,
+  "checks": [
+    "disconnected_startup",
+    "alpaca_management",
+    "matching_pilot_http_assets",
+    "websocket_ping",
+    "websocket_status",
+    "full_stationary_fixture_initialization",
+    "telemetry_parsing",
+    "disconnect"
+  ],
+  "fixture_commands": {
+    "790": 1,
+    "799": 1,
+    "296": 1,
+    "300": 1,
+    "298": 1,
+    "520": 2,
+    "524": 1,
+    "782": 1,
+    "778": 1,
+    "775": 1,
+    "284": 1,
+    "802": 1,
+    "824": 1,
+    "780": 1,
+    "305": 1,
+    "272": 1,
+    "547": 1,
+    "808": 1,
+    "545": 1,
+    "517": 11
+  },
+  "elapsed_seconds": 75.8,
+  "physical_device_contacted": false,
+  "motor_physics_validated": false
+}

@@ -1,0 +1,216 @@
+{
+  "release": "2.2.0",
+  "port_version": "0.2.0-rc.1",
+  "upstream_pin": {
+    "tag": "v2.2.0",
+    "archive_sha256": "4ba9d6a1b1be1a15fc0f6670c5219cf147a296e0c48a229bb33c0d0e5fc7e720",
+    "git_ref": {
+      "ref": "refs/tags/v2.2.0",
+      "node_id": "REF_kwDOMqy8ZbByZWZzL3RhZ3MvdjIuMi4w",
+      "url": "https://api.github.com/repos/ogecko/alpaca-benro-polaris/git/refs/tags/v2.2.0",
+      "object": {
+        "sha": "5e92a54e54fa17643a7908d0de82d2544269a6cd",
+        "type": "commit",
+        "url": "https://api.github.com/repos/ogecko/alpaca-benro-polaris/git/commits/5e92a54e54fa17643a7908d0de82d2544269a6cd"
+      }
+    }
+  },
+  "package": {
+    "archive": "benro-alpaca-pilot-2.2.0-port.0.2.0-rc.1-sd-fat.tar.gz",
+    "sha256": "1e4fe3b33c0eeacafa85e9f4ae9e2558457e3bf38f22efee30529d4086a69520",
+    "archive_bytes": 59696116,
+    "manifest_sha256": "d528e77576481b425855a013702a353eadc9bd2c152bb4a84ae37edb9656c544",
+    "files": 4605,
+    "validation": "all application/runtime bytes identical to ARM-tested candidate; only notices changed"
+  },
+  "changed_dependencies": {
+    "release": "2.2.0",
+    "changed": [
+      {
+        "name": "aiohttp",
+        "version": "3.14.5",
+        "sdist": {
+          "url": "https://files.pythonhosted.org/packages/6c/4c/bdccd81e9ee225b69c60e7766c9a5b05364f118f4d383713b89a682d772d/aiohttp-3.14.5.tar.gz",
+          "hash": "sha256:5558a7f5a05af9ecf744af91e5baefc436f93c9333e656c27ec253f9a6bbe178",
+          "size": 8078052,
+          "upload-time": "2026-10-11T01:05:12.408Z"
+        },
+        "build_class": "universal-wheel-available",
+        "dependencies": [
+          "aiohappyeyeballs",
+          "aiosignal",
+          "attrs",
+          "frozenlist",
+          "multidict",
+          "propcache",
+          "yarl"
+        ]
+      },
+      {
+        "name": "certifi",
+        "version": "2026.10.23",
+        "sdist": {
+          "url": "https://files.pythonhosted.org/packages/fd/11/b524cbd9bbdaca58608e4cf4053fd463417549e1959fa8d3aa18319f9555/certifi-2026.10.23.tar.gz",
+          "hash": "sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd",
+          "size": 136225,
+          "upload-time": "2026-10-23T11:36:16.478Z"
+        },
+        "build_class": "universal-wheel-available",
+        "dependencies": []
+      },
+      {
+        "name": "multidict",
+        "version": "7.2.1",
+        "sdist": {
+          "url": "https://files.pythonhosted.org/packages/7b/6b/29ef8e752f5854dcc267ded0652c475bec99b86f255957a0d4fcad657b18/multidict-7.2.1.tar.gz",
+          "hash": "sha256:e8af3e6f1bdbc31fd762b094133b478b89988eaebc63cbe82b1d9e3bbd15cede",
+          "size": 369994,
+          "upload-time": "2026-10-24T20:41:35.457Z"
+        },
+        "build_class": "universal-wheel-available",
+        "dependencies": []
+      },
+      {
+        "name": "urllib3",
+        "version": "2.8.0",
+        "sdist": {
+          "url": "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz",
+          "hash": "sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63",
+          "size": 458972,
+          "upload-time": "2026-09-15T19:29:36.253Z"
+        },
+        "build_class": "universal-wheel-available",
+        "dependencies": []
+      },
+      {
+        "name": "yarl",
+        "version": "1.25.1",
+        "sdist": {
+          "url": "https://files.pythonhosted.org/packages/75/16/e8be8e2fb175bbf41a0680381a319f1199fae256588241a2ac8677eafb49/yarl-1.25.1.tar.gz",
+          "hash": "sha256:03dd38de09bc213e9a8b29761eec33ee1d5318dac0e49d8af36e4d27830e23a7",
+          "size": 246245,
+          "upload-time": "2026-09-15T19:35:02.264Z"
+        },
+        "build_class": "universal-wheel-available",
+        "dependencies": [
+          "idna",
+          "multidict",
+          "propcache"
+        ]
+      }
+    ],
+    "wheels": {
+      "aiohttp-3.14.5-cp313-cp313-linux_armv7l.whl": "eba7d6dfd0e566bdb2a0722019a102b676d190c64ea3c3e645cb263b6eec2585",
+      "certifi-2026.10.23-py3-none-any.whl": "c8ed01cb57b7cade81ecdaf196a7e15a9ad83e1f6bd3e2a6c79e804789f7f5a6",
+      "multidict-7.2.1-cp313-cp313-linux_armv7l.whl": "deb5c655bf34471cb251042511c5819a9c202cd491bb6d6cf95e3ac97bd96c36",
+      "urllib3-2.8.0-py3-none-any.whl": "2c53607e86254cf3b83db684d09095230ba0fd7c3a37d30fe1878fc5ac8229fc",
+      "yarl-1.25.1-cp313-cp313-linux_armv7l.whl": "afe15211be07a7a04fb5636ab5949149f12176e9da0006cd15c250db1eb3a631"
+    },
+    "target_validation": "pending"
+  },
+  "manifest_verification": {
+    "result": "passed",
+    "files": 4605,
+    "wheel_records": 34
+  },
+  "abi_acceptance": {
+    "result": "passed",
+    "elf_objects": 238,
+    "glibc_ceiling": "2.24",
+    "receipt": "pilot-2.2.0-abi.json"
+  },
+  "arm_runtime_acceptance": {
+    "result": "passed",
+    "receipt": "pilot-2.2.0-acceptance.log",
+    "application": {
+      "result": "passed",
+      "driver_version": "2.2.0 Release",
+      "pilot_assets_verified": 129,
+      "checks": [
+        "disconnected_startup",
+        "alpaca_management",
+        "matching_pilot_http_assets",
+        "websocket_ping",
+        "websocket_status",
+        "full_stationary_fixture_initialization",
+        "telemetry_parsing",
+        "disconnect"
+      ],
+      "fixture_commands": {
+        "790": 1,
+        "799": 1,
+        "296": 1,
+        "300": 1,
+        "298": 1,
+        "520": 2,
+        "524": 1,
+        "782": 1,
+        "778": 1,
+        "775": 1,
+        "284": 1,
+        "802": 1,
+        "824": 1,
+        "780": 1,
+        "305": 1,
+        "272": 1,
+        "547": 1,
+        "808": 1,
+        "545": 1,
+        "517": 11
+      },
+      "elapsed_seconds": 75.8,
+      "physical_device_contacted": false,
+      "motor_physics_validated": false
+    }
+  },
+  "physical_acceptance": true,
+  "published": false,
+  "settings_migration": {
+    "result": "passed",
+    "receipt": "settings-migration-2.2.0.json"
+  },
+  "prior_tested_archive_sha256": "c42865fba2e9299079f1559c06c60a1b3fce869678277505735ab5edc8e8ae97",
+  "notice_refresh_receipt": "docs/validation/pilot-2.2.0-notice-refresh.json",
+  "source_companion": {
+    "archive": "copyleft-source-companion-2.2.0.tar.gz",
+    "sha256": "7c5a415b732acf6bb86181b9f15098a54ec50032b2c04e4a301bb4109cd3ac3e",
+    "packages": [
+      "certifi",
+      "ifaddr",
+      "zeroconf"
+    ],
+    "files": 102,
+    "source_manifest_verified": true,
+    "private_session_scripts_excluded": true
+  },
+  "notices": {
+    "npm": 156,
+    "npm_unresolved": [],
+    "rust": 32,
+    "rust_changed": [],
+    "rust_missing_notices": [],
+    "web_assets": 129,
+    "web_assets_match_upstream": true,
+    "recovered_notice_texts": 237,
+    "runtime_sha256": "1e4fe3b33c0eeacafa85e9f4ae9e2558457e3bf38f22efee30529d4086a69520",
+    "packaged_notice_texts_match": true
+  },
+  "source_replacement_arm": "passed",
+  "gcc_replacement_arm": "passed",
+  "mmt_version_switch_arm": "Beta 8 install, 2.2.0 upgrade and Beta 8 rollback passed with version-specific settings",
+  "existing_sd_acceptance": {
+    "result": "core checks passed after connection recovery",
+    "receipt": "docs/validation/pilot-2.2.0-existing-sd.json",
+    "fresh_sd": false,
+    "network_repeat": "passed for 134 seconds; earlier incident cause unresolved"
+  },
+  "physical_acceptance_scope": {
+    "scope": "stationary existing-SD upgrade/rollback and clean Toolkit directory on existing filesystem",
+    "result": "passed; one recovered network incident did not recur in monitored repeat",
+    "receipt": "docs/validation/pilot-2.2.0-clean-install.json",
+    "freshly_formatted_card": false,
+    "public_downloads": false,
+    "post_stop_keepalive_seconds": 134.379,
+    "motor_or_observing_accuracy": false
+  }
+}

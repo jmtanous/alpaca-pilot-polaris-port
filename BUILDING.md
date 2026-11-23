@@ -120,3 +120,26 @@ cross-build of every port dependency against the public SDK and physical accepta
 of those newly built binaries remain separate work. The rc.2 candidate retains the
 already tested executable payload; the replacement libraries are validation outputs
 only and are not shipped in it.
+
+## Separate Pilot 2.2.0 build
+
+Stage the exact official source with `scripts/stage-upstream.py --release 2.2.0`.
+Inventory its lock with `scripts/inventory-dependencies.py --release 2.2.0` and
+fetch the changed pinned sdists with `scripts/build-release-dependencies.py fetch`.
+Inside the pinned offline Python build image, run its `build` action with the
+built host Python 3.13. Outputs go to workspace/python/out/releases/2.2.0/wheels.
+
+Review the matching npm lock and existing Rust vendor tree with
+scripts/review-distribution-licenses.py, using a separate license-review-2.2.0
+output. Fetch pinned archives once; repeat offline. Package using
+`scripts/package-pilot-release.py --base /path/to/verified-beta8-rc2.tar.gz`.
+The script requires a fresh staging directory and reuses unchanged base binaries
+explicitly. Review its separate package receipt, manifest and wheel integrity.
+It never overwrites Beta 8's prefix or archives.
+
+Generate the matching companion with
+`python3 workspace/python/package-source-companion.py --release 2.2.0 --dev-env /path/to/dev-env`.
+The shared environment recipes are included alongside the port recipes. Validate
+replacement sources with check-python-source-replacement.py --release 2.2.0;
+its --sdk option selects the pinned public SDK. check-gcc-replacement.py accepts
+--sdk, --libraries and --output for isolated release checks.

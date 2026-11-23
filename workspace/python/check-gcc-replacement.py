@@ -13,12 +13,15 @@ import subprocess
 
 root = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--sdk', type=Path, default=root/'workspace/python/out/public-sdk-sysroot')
+parser.add_argument('--libraries', type=Path, default=root/'workspace/python/out/public-toolchain/build/toolchain/arm-linux-gnueabi/lib')
+parser.add_argument('--output', type=Path, default=root/'workspace/python/out/public-sdk-check/gcc-replacement-validation.json')
 parser.add_argument('--runtime-prefix', type=Path,
                     default=root/'workspace/python/out/runtime-sd-root/opt/benro-python')
 args = parser.parse_args()
 prefix = args.runtime_prefix.resolve()
-sdk = root/'workspace/python/out/public-sdk-sysroot'
-libraries = root/'workspace/python/out/public-toolchain/build/toolchain/arm-linux-gnueabi/lib'
+sdk = args.sdk.resolve()
+libraries = args.libraries.resolve()
 names = ['libatomic.so.1', 'libgcc_s.so.1', 'libgfortran.so.5', 'libstdc++.so.6']
 rows = []
 for name in names:
@@ -48,11 +51,12 @@ print('ARM runtime loaded rebuilt GCC libraries; numeric and cryptography checks
 subprocess.run(['qemu-arm-static', '-L', str(sdk),
                 '-E', 'PYTHONHOME='+str(prefix),
                 '-E', 'LD_LIBRARY_PATH='+str(libraries)+':'+str(prefix/'lib'),
-                str(prefix/'bin/python3.13'), '-c', code, str(libraries)], check=True)
+                str(prefix/'bin/python3.13'), '-B', '-c', code, str(libraries)], check=True)
 report = {'gcc_build': 'passed', 'libraries': rows,
           'arm_runtime_imports_and_numeric_crypto_operations': 'passed',
           'rebuilt_library_mappings_verified': True,
           'physical_mount_tested': False, 'original_runtime_modified': False}
-output = root/'workspace/python/out/public-sdk-check/gcc-replacement-validation.json'
+output = args.output
+output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps(report, indent=2))

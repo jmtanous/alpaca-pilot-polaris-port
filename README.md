@@ -1,3 +1,9 @@
+This repository retains the published Beta 8 port and adds a separate Pilot 2.2.0
+candidate. The legacy VERSION and default build recipes still select Beta 8.
+Use the release-specific workflow in BUILDING.md for 2.2.0. Packages are downloaded
+through the MMT catalog; they are no longer embedded in the MMT APK. The new
+candidate is local and has not completed physical acceptance or publication.
+
 # Alpaca Pilot Polaris Port
 
 Build recipes and compatibility tools for running Alpaca Benro Polaris / Alpaca

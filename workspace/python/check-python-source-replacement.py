@@ -17,10 +17,13 @@ from urllib.parse import urlsplit
 
 root = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--release', choices=['beta8', '2.2.0'], default='beta8')
+parser.add_argument('--sdk', type=Path, default=root/'workspace/python/out/public-sdk-sysroot')
 parser.add_argument('--arm-runtime-prefix', type=Path,
                     help='Run with this ARM Python prefix under qemu-arm-static')
 args = parser.parse_args()
-packages = json.loads((root/'dependencies.json').read_text())['packages']
+dependencies = 'dependencies.json' if args.release == 'beta8' else 'dependencies-2.2.0.json'
+packages = json.loads((root/dependencies).read_text())['packages']
 with tempfile.TemporaryDirectory(prefix='mmt-source-check-') as tmp:
     stage = Path(tmp)
     paths = []
@@ -52,12 +55,12 @@ assert message.packets() and all(isinstance(p, bytes) for p in message.packets()
 assert zeroconf.__version__ == '0.150.0'
 print('Modified certifi source loaded; pure-Python zeroconf DNS serialization passed')
 '''
-    command = [sys.executable, '-S', '-c', code]
+    command = [sys.executable, '-B', '-S', '-c', code]
     if args.arm_runtime_prefix:
         prefix = args.arm_runtime_prefix.resolve()
-        sdk = root/'workspace/python/out/public-sdk-sysroot'
+        sdk = args.sdk.resolve()
         command = ['qemu-arm-static', '-L', str(sdk),
                    '-E', 'PYTHONHOME='+str(prefix),
                    '-E', 'LD_LIBRARY_PATH='+str(prefix/'lib'),
-                   str(prefix/'bin/python3.13'), '-S', '-c', code]
+                   str(prefix/'bin/python3.13'), '-B', '-S', '-c', code]
     subprocess.run(command, cwd=stage, env=env, check=True)

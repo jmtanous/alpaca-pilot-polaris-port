@@ -1,17 +1,15 @@
-# Experimental rc.2 release checklist
+# Candidate release gates
 
-- [x] MIT original contributions; upstream and dependency terms retained.
-- [x] Public snapshot excludes private history, target SDK captures and credentials.
-- [x] Pinned npm/Rust input review and 237 recovered notices packaged.
-- [x] GCC source, applied patch and Python source companion verified.
-- [x] Public Debian SDK and GCC rebuild; ARM replacement-library loading tests.
-- [x] Modified certifi and pure-Python zeroconf replacement checks on ARM.
-- [x] Runtime and source companion frozen together with hashes.
-- [x] MMT-managed existing-SD upgrade, settings retention, startup, webpage, Stop and reconnect.
-- [x] Owner authorized experimental prerelease downloads with source companion.
-- [ ] Fresh-SD acceptance (not claimed).
-- [ ] Standalone-launcher physical acceptance (not claimed).
-- [ ] Full clean cross-build and physical acceptance of newly rebuilt dependencies (not claimed).
+Local builds, package/source integrity and automated checks are recorded in
+RELEASE-VALIDATION.json. Published Beta 8/build 11 remain unchanged.
 
-RELEASE-VALIDATION.json records exact scope. Rebuilt replacement libraries were
-validated separately and are not substituted into this released runtime.
+1. Review exact APK, runtime, Pilot archive, source companions and source diffs.
+2. Obtain separate authorization for any public repository, push or release upload.
+3. Upload immutable package/source assets before adding their actual IDs to catalog-v2.
+4. Verify anonymous asset bytes and hashes; run verify-catalog-candidate.py with
+   --require-assets from the MMT checkout. Keep legacy catalog.json unchanged.
+5. Complete attended phone/Polaris acceptance for the new candidate, including
+   fresh SD and version-specific settings rollback. No firmware or movement tests
+   are implied. Preserve working cards and pairing/settings.
+6. Publish the reviewed catalog/app release only with the applicable authorization.
+   Do not label local VM checks as physical acceptance.

@@ -7,13 +7,18 @@ contains exact Python dependency source URLs and SHA-256 hashes, and
 `share/build/sources.json` records native source inputs.
 
 The source companion `copyleft-source-companion.tar.gz` contains the pinned,
-unchanged certifi 2026.7.22 (MPL-2.0) and zeroconf 0.150.0 (LGPL-2.1-or-later)
+unchanged certifi (MPL-2.0) and zeroconf 0.150.0 (LGPL-2.1-or-later)
 source archives, their hashes and port build recipes. Their respective licenses
 remain inside those source archives. Generate it offline with:
 
 ```
-python3 workspace/python/package-source-companion.py --downloads /path/to/pinned-downloads
+python3 workspace/python/package-source-companion.py --release beta8 --downloads /path/to/pinned-downloads
+python3 workspace/python/package-source-companion.py --release 2.2.0 --downloads /path/to/pinned-downloads
 ```
+
+Beta 8 pins certifi 2026.7.22; Pilot 2.2.0 pins certifi 2026.10.23. The release
+selector uses the matching dependency lock, notices and source hashes. Shared
+development recipes are included under recipes/dev-env.
 
 The companion now also includes the exact GCC 12.2.0 source archive and applied
 documentation patch for libatomic, libgcc_s, libgfortran and libstdc++. Input hashes

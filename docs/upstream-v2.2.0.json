@@ -1,0 +1,14 @@
+{
+  "tag": "v2.2.0",
+  "archive_sha256": "4ba9d6a1b1be1a15fc0f6670c5219cf147a296e0c48a229bb33c0d0e5fc7e720",
+  "git_ref": {
+    "ref": "refs/tags/v2.2.0",
+    "node_id": "REF_kwDOMqy8ZbByZWZzL3RhZ3MvdjIuMi4w",
+    "url": "https://api.github.com/repos/ogecko/alpaca-benro-polaris/git/refs/tags/v2.2.0",
+    "object": {
+      "sha": "5e92a54e54fa17643a7908d0de82d2544269a6cd",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ogecko/alpaca-benro-polaris/git/commits/5e92a54e54fa17643a7908d0de82d2544269a6cd"
+    }
+  }
+}

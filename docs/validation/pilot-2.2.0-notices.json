@@ -1,0 +1,12 @@
+{
+  "npm": 156,
+  "npm_unresolved": [],
+  "rust": 32,
+  "rust_changed": [],
+  "rust_missing_notices": [],
+  "web_assets": 129,
+  "web_assets_match_upstream": true,
+  "recovered_notice_texts": 237,
+  "runtime_sha256": "1e4fe3b33c0eeacafa85e9f4ae9e2558457e3bf38f22efee30529d4086a69520",
+  "packaged_notice_texts_match": true
+}
